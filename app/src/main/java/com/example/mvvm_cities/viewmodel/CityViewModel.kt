@@ -2,6 +2,7 @@ package com.example.mvvm_cities.viewmodel
 
 import android.os.Handler
 import android.os.Looper
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvm_cities.model.City
@@ -14,9 +15,11 @@ class CityViewModel: ViewModel() {
     private  val cities = CityDataProvider().getCities()
     private  var currentIndex = 0
     private  val delay = 2000L
+
     init {
         loop()
     }
+    fun getCityData(): LiveData<City> = cityData
     private  fun loop(){
         //To Get a callback after certain delay
         //updatecity will be called after delay(every2 sec)
